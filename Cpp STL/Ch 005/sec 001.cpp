@@ -71,6 +71,12 @@
 
 어댑터 (Adaptor) : 구성 요소의 인터페이스를 변경해 새로운 인터페이스를 갖는 구성 요소로 변경
 
+            - 컨테이너 어댑터 : stack, queue, priority_queue
+            
+            - 반복자 어댑터 : reverse_iterator, back_insert_iterator, front_insert_iterator, insert_iterator  
+            
+            - 함수 어댑터 : 바인더(binder), 부정자(negator), 함수 포인터 어댑터(adaptor for pointers to functions) 
+			 
 /***********************************************************************************/
 
 
