@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <typeinfo>
+#include <stdexcept>
 
 
 using namespace std;
@@ -8,8 +9,24 @@ using namespace std;
 
 //#define S1
 //#define S2
-#define S3
- 
+//#define S3
+//#define S4
+//#define S5
+//#define S6
+//#define S7
+//#define S8
+//#define S9
+//#define S10
+//#define S11
+//#define S12
+//#define S13
+//#define S14
+//#define S15
+//#define S16
+//#define S17
+//#define S18
+//#define S19
+#define S20
 
 
 
@@ -94,7 +111,7 @@ int main()
 	cout<<endl;
 	
 	cout<< v.size() <<endl;     //size(): 저장 원소의 개수  
-	cout<< v.capacity() <<endl; //capacity(): 실제 할당된 메모리 공간의 크기 
+	cout<< v.capacity() <<endl; //capacity(): 실제 할당된 메모리 공간의 크기  *vector만이 유일하게 가지는 멤버함수 
 	cout<< v.max_size() <<endl; //max_size(): 컨테이너가 담을 수 있는 최대 원소의 개수  
 	
 	return 0;
@@ -102,4 +119,677 @@ int main()
  } 
 #endif /* S3 */ 
 
-//~172p
+
+
+
+
+
+#ifdef S4
+
+//vector의 capacity()
+int main()
+{
+	vector<int> v;
+	
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(10);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(20);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(30);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(40);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(50);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(60);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(70);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(80);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(90);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	for (vector<int>::size_type i = 0; i <v.size(); ++i)
+	{
+		cout<< v[i] << " ";
+	}
+	cout<<endl;
+	
+	
+	return 0;
+ } 
+#endif /* S4 */
+
+
+
+
+
+
+
+
+#ifdef S5
+
+//vector의 reserve()
+int main()
+{
+	vector<int> v;
+	
+	v.reserve(8); //v.reserve(n): n개의 원소를 저장할 메모리 공간(capacity)을 미리 할당
+	cout<< "size: " << v.size() << " capacity: " << v.capacity() << endl;
+	
+	v.push_back(10);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(20);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(30);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(40);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(50);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(60);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(70);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(80);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	v.push_back(90);
+	cout<<"size: "<< v.size() <<" capacity: "<< v.capacity() <<endl;
+	
+	for (vector<int>::size_type i = 0; i <v.size(); ++i)
+	{
+		cout<< v[i] << " ";
+	}
+	cout<<endl;
+	
+	
+	return 0;
+	
+	
+	 
+ } 
+#endif /* S5 */
+
+
+
+
+
+
+#ifdef S6
+
+//vector의 생성자
+int main()
+{
+	vector<int> v1(5); //0으로 초기화된 size가 5인 컨테이너
+	
+	v1.push_back(10); //10추가 
+	v1.push_back(20); 
+	v1.push_back(30); 
+	v1.push_back(40); 
+	v1.push_back(50); 
+	
+	for (vector<int>::size_type i = 0; i < v1.size(); ++i)
+	{
+		cout<< v1[i] <<" ";
+	}
+	cout<<endl;
+	
+	
+	
+	vector<int> v2(5); //0으로 초기화된 size가 5인 컨테이너 
+	
+	v2[0] = 10; //0에서 10으로 수정 
+	v2[1] = 20;
+	v2[2] = 30;
+	v2[3] = 40;
+	v2[4] = 50;
+	
+	for (vector<int>::size_type i = 0; i < v2.size(); ++i)
+	{
+		cout<< v2[i] <<" ";
+	}
+	cout<<endl;
+	
+	return 0;	 
+	
+ } 
+#endif /* S6 */ 
+
+
+
+
+
+
+#ifdef S7
+
+//vector 생성자의 초깃값 지정
+int main()
+{
+	vector<int> v1(5); //기본값 0으로 초기화된 size가 5인 컨테이너
+	for (vector<int>::size_type i = 0; i < v1.size(); ++i)
+	{
+		cout<< v1[i] <<" ";
+	}
+	cout<<endl; 
+	
+	
+	vector<int> v2(5, 0); //지정값 0으로 초기화된 size가 5인 컨테이너
+	for (vector<int>::size_type i = 0; i < v2.size(); ++i)
+	{
+		cout<< v2[i] <<" ";
+	} 
+	cout<<endl;
+	
+	vector<int> v3(5, 10); //지정값 10으로 초기화된 size가 5인 컨테이너
+	for (vector<int>::size_type i = 0; i < v3.size(); ++i)
+	{
+		cout<< v3[i] <<" ";
+	} 
+	cout<<endl;
+	
+	return 0;
+	
+} 
+#endif /* S7 */
+
+
+
+
+
+
+#ifdef S8
+
+//vector의 resize()
+int main()
+{
+	vector<int> v(5); //기본값 0으로 초기화된 size가 5인 컨테이너 
+	
+	v[0] = 10; 
+	v[1] = 20;
+	v[2] = 30;
+	v[3] = 40;
+	v[4] = 50;
+	
+	for(vector<int>::size_type i = 0; i <v.size(); ++i)
+	{
+		cout<< v[i] << " ";
+	}
+	cout << endl;
+	cout << "size: "<< v.size() <<" capacity: "<< v.capacity() << endl;
+
+
+
+	v.resize(10); //기본값 0으로 초기화된 size가 10인 컨테이너로 확장 *뒤쪽으로 확장됨 
+	 
+	for(vector<int>::size_type i = 0; i <v.size(); ++i) 
+	{
+		cout<< v[i] << " ";
+	}
+	cout << endl;
+	cout << "size: "<< v.size() <<" capacity: "<< v.capacity() << endl;
+
+	
+	
+	
+	v.resize(5); //size가 5인 컨테이너로 축소 capacity는 변화없음
+	
+	for(vector<int>::size_type i = 0; i <v.size(); ++i)
+	{
+		cout<< v[i] << " ";
+	}
+	cout << endl;
+	cout << "size: "<< v.size() <<" capacity: "<< v.capacity() << endl;
+ 
+
+
+	return 0;
+	 
+ } 
+#endif /* S8 */
+
+
+
+
+
+
+#ifdef S9
+
+//vector의 clear()와 empty()
+int main()
+{
+	vector<int> v(5); 
+	
+	v[0] = 10; 
+	v[1] = 20;
+	v[2] = 30;
+	v[3] = 40;
+	v[4] = 50;
+	
+	for(vector<int>::size_type i = 0; i <v.size(); ++i)
+	{
+		cout<< v[i] << " ";
+	}
+	cout << endl;
+	cout << "size: "<< v.size() <<" capacity: "<< v.capacity() << endl;
+
+	v.clear(); //v를 비운다. *메모리 공간은 제거가 되지 않음 ~ 비효율적 
+	
+	if(v.empty()) //v가 비었는가? 
+	{
+		cout<< "v에 원소가 없습니다."<<endl;
+	} 
+	
+	return 0; 
+	
+ } 
+#endif /* S9 */
+
+
+
+
+
+
+#ifdef S10
+
+//swap을 사용한 할당 메모리 제거
+int main()
+{
+	vector<int> v(5);
+	cout<<"size: "<<v.size()<<" capacity: "<<v.capacity()<< endl;
+	
+	vector<int>().swap(v); //기본 생성자로 만든 vector 컨테이너와 v 컨테이너를 swap한다.
+	cout<<"size: "<<v.size() <<" capacity: "<<v.capacity() <<endl;
+	
+	return 0; 
+ } 
+#endif /* S10 */
+
+
+
+
+
+
+
+#ifdef S11
+
+//vector의 swap()
+int main()
+{
+	vector<int> v1;
+	v1.push_back(10);
+	v1.push_back(20);
+	v1.push_back(30);
+	
+	vector<int> v2;
+	v2.push_back(100);
+	v2.push_back(200);
+	v2.push_back(300);
+	
+	for(vector<int>::size_type i = 0; i <v1.size(); i++)
+	{
+		cout<< v1[i] <<", "<< v2[i] <<endl;
+	}
+	cout<<endl;
+	
+	
+	v1.swap(v2); //v1과 v2를 swap합니다.
+	for(vector<int>::size_type i = 0; i <v1.size(); i++)
+	{
+		cout<< v1[i] <<", "<< v2[i] <<endl;
+	}
+	cout<<endl;
+	 
+	return 0;
+ } 
+#endif /* S11 */
+
+
+
+
+
+
+
+#ifdef S12
+
+//vector의 front와 back()
+int main()
+{
+	vector<int> v;
+
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	v.push_back(50);
+	
+	for(vector<int>::size_type i = 0; i <v.size(); i++)
+	{
+		cout<< v[i] <<" ";
+	}
+	cout<<endl;
+	
+	cout<< v[0] <<", "<<v.front() <<endl; //첫번째 원소
+	cout<< v[4] <<", "<<v.back() <<endl; //마지막 원소 
+	
+	return 0;
+	
+ }  
+#endif /* S12 */
+
+
+
+
+
+
+#ifdef S13
+
+//vector의 front()와 back() 참조
+int main()
+{
+	vector<int> v;
+
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	v.push_back(50);
+	
+	for(vector<int>::size_type i = 0; i < v.size(); ++i)
+	{
+		cout<< v[i] <<" ";
+	}
+	cout<<endl;
+	
+	
+	v.front() = 100; //첫번쨰 원소를 100으로
+	v.back() = 500; //마지막 원소를 500으로 
+	
+	
+	for(vector<int>::size_type i = 0; i < v.size();  ++i)
+	{
+		cout<< v[i] <<" ";
+	}
+	cout<<endl; 
+	
+	return 0;
+} 
+#endif /* S13 */
+
+
+
+
+
+
+
+#ifdef S14
+
+//vector의 []연산자와 at()멤버함수 
+int main()
+{
+	vector<int> v;
+	
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	v.push_back(50);
+	
+	for(vector<int>::size_type i = 0; i < v.size(); ++i)
+	{
+		cout<< v[i] <<" ";
+	}
+	cout<<endl;
+	
+	
+	v[0] = 100; //범위 점검없는 0 인덱스 원소의 참조
+	v[4] = 500;  	
+	
+	for(vector<int>::size_type i = 0; i < v.size(); ++i)
+	{
+		cout<< v[i] <<" ";
+	}
+	cout<<endl;
+	
+	
+	v.at(0) = 1000; //범위 점검있는 0 인덱스 원소의 참조
+	v.at(4) = 5000;  
+	
+	for(vector<int>::size_type i = 0; i < v.size(); ++i)
+	{
+		cout<< v[i] <<" ";
+	}
+	cout<<endl;
+	
+	return 0;
+	
+}
+#endif/* S14 */
+
+
+
+
+
+
+
+#ifdef S15
+
+//at()의 out_of_range 예외 
+int main()
+{
+	vector<int> v;
+	
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	v.push_back(50);
+	
+	try
+	{
+		cout<< v.at(0) <<endl;
+		cout<< v.at(3) <<endl;
+		cout<< v.at(6) <<endl; //throw out_of_range 예외 
+		
+	}
+	catch(out_of_range &e)
+	{
+		cout<< e.what() <<endl;
+	}
+	
+	return 0;
+	
+}
+#endif/* S15 */
+
+
+
+
+
+
+#ifdef S16
+
+//vector의 assign()
+int main()
+{
+	vector<int> v(5, 1); //초기값 1의 5개의 원소를 갖는 컨테이너 생성
+	
+	for(vector<int>::size_type i = 0; i < v.size(); ++i)
+	{
+		cout<< v[i] << " ";
+	}
+	cout<<endl;
+	
+	
+	
+	v.assign(5, 2); //5개의 원소값을 2로 할당
+	
+	for (vector<int>::size_type i = 0; i < v.size(); ++i)
+	{
+		cout<<v[i]<<" ";
+	}
+	cout<<endl; 
+	
+	return 0;
+ } 
+#endif /* S16 */
+
+
+
+
+
+
+
+#ifdef S17
+
+//vector의 begin()과 end()
+int main()
+{
+	vector<int> v;
+	
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	v.push_back(50);
+	
+	for (vector<int>::size_type i = 0; i < v.size(); ++i)
+	{
+		cout<< v[i] <<" ";
+	}
+	cout<<endl;
+	
+		
+	for (vector<int>::iterator iter = v.begin(); iter != v.end(); ++iter)
+	{
+		cout<< *iter <<" ";
+	}
+	cout<<endl; 	 	
+	
+	return 0;
+} 
+#endif /* S17 */
+
+
+
+
+
+
+
+#ifdef S18
+
+//vector 반복자의 연산 
+int main()
+{
+	vector<int> v;
+	
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	v.push_back(50);
+	
+	vector<int>::iterator iter = v.begin(); //시작 원소 10을 가리킨다.
+	cout<< *iter <<endl;
+	
+	iter += 2; //+2인 위치의 원소(30)을 가리킨다.
+	cout<< *iter <<endl;
+	
+	iter -= 1; //-1인 위치의 원소(20)을 가리킨다.
+	cout<< *iter <<endl;
+	
+	return 0;
+} 
+#endif /* S18 */
+
+
+
+
+
+
+#ifdef S19
+
+//일반 반복자와 상수 반복자
+int main()
+{
+	vector<int> v;
+	
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	v.push_back(50);
+	
+	
+	vector<int>::iterator iter = v.begin(); //일반 반복자가 시작 원소 10을 가리킨다. 
+	vector<int>::const_iterator citer = v.begin(); //상수 반복자가 시작 원소 10을 가리킨다. 
+	
+	cout<< *iter <<endl; //가리키는 원소의 참조
+	cout<< *citer <<endl; //가리키는 원소의 상수 참조
+	
+	cout<< *++iter <<endl; //다음 원소로 이동한 원소의 참조
+	cout<< *++citer <<endl; //다음 원소로 이동한 원소의 상수 참조 
+	
+	*iter = 100; //일반 반복자는 가리키는 원소를 변경할 수 있음 
+//	*citer = 100; //상수 반복자는 가리키는 원소를 변경할 수 없음 
+	
+} 
+#endif /* S19 */
+
+
+
+
+
+
+
+#ifdef S20
+
+//const와 반복자 
+int main()
+{
+	vector<int> v;
+	int arr[5] = {10, 20, 30 ,40 ,50};
+	
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	v.push_back(50);
+	
+	vector<int>::iterator iter = v.begin();
+	int* p = arr;
+	cout<< *iter <<", "<< *p << endl; //iter는 p처럼 동작 
+	
+	vector<int>::const_iterator citer = v.begin();
+	const int* cp = arr;
+	cout<< *citer <<", "<< *cp <<endl; //citer는 cp처럼 동작
+	
+	const vector<int>::iterator iter_const = v.begin();
+	int* const p_const = arr; //iter_const는 p_const처럼 동작
+	cout<< *iter_const <<", "<< *p_const <<endl;
+	
+	const vector<int>::const_iterator citer_const = v.begin();
+	const int* const cp_const = arr; //citer_const는 cp_const처럼 동작 
+	cout<< *citer_const <<", "<< *cp_const <<endl;
+	
+	return 0; 
+}
+#endif /* S20 */
