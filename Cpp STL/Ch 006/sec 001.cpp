@@ -26,8 +26,13 @@ using namespace std;
 //#define S17
 //#define S18
 //#define S19
-#define S20
-
+//#define S20
+//#define S21 
+//#define S22
+//#define S23
+//#define S24
+//#define S25
+#define S26
 
 
 #ifdef S1
@@ -793,3 +798,269 @@ int main()
 	return 0; 
 }
 #endif /* S20 */
+
+
+
+
+
+
+
+#ifdef S21
+
+//iterator와 reverse_iterator
+int main()
+{
+	vector<int> v;
+
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	v.push_back(50);
+	
+	vector<int>::iterator iter; //정방향 반복자
+	vector<int>::reverse_iterator riter; //역방향 반복자
+	
+	for(iter = v.begin(); iter != v.end(); ++iter)
+	{
+		cout<< *iter << " ";
+	} 
+	cout<<endl;
+	
+	
+	for(riter = v.rbegin(); riter != v.rend(); ++riter)
+	{
+		cout<< *riter << " ";
+	} 
+	cout<<endl;
+	
+	return 0;
+} 
+#endif /* S21 */
+
+
+
+
+
+
+
+#ifdef S22
+
+//insert() 멤버 함수의 사용
+int main()
+{
+	vector<int> v;
+
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	v.push_back(50);
+	
+	vector<int>::iterator iter = v.begin() + 2;
+	vector<int>::iterator iter2;
+	
+	iter2 = v.insert(iter, 100); //iter가 가리키는 위치에 정수 100을 삽입
+	                              //iter2는 삽입한 정수를 가리키는 반복자 
+
+	for(iter = v.begin(); iter != v.end(); ++iter)
+	{
+		cout<< *iter << " ";
+	} 
+	cout<<endl;
+	cout<<"iter2: "<< *iter2 <<endl;
+	
+	return 0;
+}  
+#endif /* S22 */
+
+
+
+
+
+
+#ifdef S23
+
+//다른 버전의 insert() 멤버함수 
+int main()
+{
+	vector<int> v;
+
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	v.push_back(50);
+	
+	vector<int>::iterator iter = v.begin() + 2;
+	
+	v.insert(iter, 3, 100); //iter가 가리키는 위치에 정수 100을  3개 삽입
+	 
+	for(iter = v.begin(); iter != v.end(); ++iter)
+	{
+		cout<< *iter << " ";
+	} 
+	cout<<endl;
+
+
+
+	vector<int> v2;
+
+	v2.push_back(100);
+	v2.push_back(200);
+	v2.push_back(300);
+	
+	iter = v2.begin()+1; 
+	
+	v2.insert(iter, v.begin(), v.end()); //iter가 가리키는 위치에 [v.begin(), v.end()) 구간의 원소를 삽입 
+	 
+	for(iter = v2.begin(); iter != v2.end(); ++iter)
+	{
+		cout<< *iter << " ";
+	} 
+	cout<<endl;
+
+
+	return 0;
+}  
+#endif /* S23 */
+
+
+
+
+
+
+
+#ifdef S24
+
+//erase()멤버 함수
+int main()
+{
+	vector<int> v;
+
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	v.push_back(50);
+	
+	vector<int>::iterator iter;
+	vector<int>::iterator iter2;
+	
+	for(iter = v.begin(); iter != v.end(); ++iter)
+	{
+		cout<< *iter <<" ";
+	}
+	cout<<endl;
+	
+	
+	iter = v.begin()+2;
+	iter = v.erase(iter); //iter가 가리키는 위치의 원소를 제거, iter2는 다음 원소 40
+	
+	for(iter = v.begin(); iter != v.end(); ++iter)
+	{
+		cout<< *iter << " ";
+	} 
+	cout<<endl;
+	
+	
+	iter2 =v.erase(v.begin()+1, v.end()); //[v.begin()+1, v.end()) 구간의 원소를 제거, iter2는 다음 원소 v.end() 
+	
+	for(iter = v.begin(); iter != v.end(); ++iter)
+	{
+		cout<< *iter <<" ";
+	}
+	cout<< endl;
+
+	
+	return 0;
+
+}   
+#endif /* S24 */
+
+
+
+
+
+
+
+#ifdef S25
+
+//반복자로 동작하는 생성자와 assign() 멤버 함수
+int main()
+{
+	vector<int> v;
+	
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	v.push_back(50);
+	
+	vector<int> v2(v.begin(), v.end()); //순차열 [v.begin(), v.end())로 v2를 초기화
+	
+	vector<int>::iterator iter;
+	for(iter = v2.begin(); iter != v2.end(); ++iter)
+	{
+		cout<< *iter << " "; //v2 출력 
+	}
+	cout<<endl;
+	
+	
+	vector<int> v3;
+	v3.assign(v.begin(), v.end()); //v3에 순차열 [v.begin(), v.end())을 할당
+	for(iter = v3.begin(); iter != v3.end(); ++iter)
+	{
+		cout<<*iter<<" "; //v3 출력 
+	}
+	cout<<endl;
+	
+	return 0; 
+	
+} 
+#endif /* S25 */
+
+
+
+
+
+
+#ifdef S26
+
+//vector와 vector 비교
+int main()
+{
+	vector<int> v1;
+	
+	v1.push_back(10);
+	v1.push_back(20);
+	v1.push_back(30);
+	v1.push_back(40);
+	v1.push_back(50);
+	
+	vector<int> v2;
+	
+	v2.push_back(10);
+	v2.push_back(20);
+	v2.push_back(50);
+	
+	if (v1 == v2) //v1과 v2의 모든 원소가 같다면 true or false 
+	{
+		cout<< "v1 == v2" <<endl;	
+	}
+	
+	if (v1 != v2) //v1과 v2의 모든 원소가 같다면 false or ture
+	{
+		cout<< "v1 != v2"<<endl;
+	}
+	
+	if (v1 < v2) //v1과 v2의 순차열의 원소를 하나씩 순서대로 비교하여 v2의 원소가 크다면 ture or false 
+	{
+		cout<< "v1 < v2"<<endl;
+	}
+	
+	
+	return 0; 
+	
+}  
+#endif /* S26 */
