@@ -12,8 +12,8 @@
   표준 시퀀스 컨테이너 (삽입 순서) :
 	
             - 배열 기반 컨테이너 : vector, deque
-	        - 노드 기반 컨테이너 : list
-
+            - 노드 기반 컨테이너 : list
+            
 
   표준 연관 컨테이너 (정렬 기준) : 
             
@@ -53,6 +53,18 @@
 
 알고리즘 (Algorithm) : 정렬, 삭제, 검색, 연산 등을 해결하는 일반화된 방법을 제공하는 함수 템플릿
 
+            - 원소를 수정하지 않는 알고리즘(nonmodifying algorithms)
+            
+            - 원소를 수정하는 알고리즘(modifying algorithms)
+            
+            - 제거 알고리즘(removing algorithms)
+            
+            - 정렬 알고리즘(sorting algorithms)
+            
+            - 정렬된 범위 알고리즘(sorted range algorithms)
+            
+            - 수치 알고리즘(numeric algorithms)
+            
 /***********************************************************************************/
 
 
