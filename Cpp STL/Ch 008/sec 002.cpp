@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <algorithm> //알고리즘 헤더
+#include <algorithm>
 
 using namespace std;
 
@@ -12,7 +12,16 @@ using namespace std;
 //#define S5
 //#define S6
 //#define S7
-#define S8
+//#define S8
+//#define S9
+//#define S10
+//#define S11
+//#define S12
+//#define S13
+//#define S14
+//#define S15
+//#define S16
+#define S17
  
 
  
@@ -411,4 +420,579 @@ int main()
 } 
 #endif /* S8 */
 
-~p350
+
+
+
+
+
+
+#ifdef S9
+
+//merge() 알고리즘의 정렬 기준으로 greater를 사용한 예
+template <typename T>
+struct Greater
+{
+	bool operator() (const T& left, const T& right) const
+	{
+		return left > right;
+	}
+};
+
+ 
+int main()
+{
+	vector<int> v1;
+	
+	v1.push_back(80);
+	v1.push_back(60);
+	v1.push_back(50);
+	v1.push_back(30);
+	v1.push_back(10);
+	
+	vector<int> v2; 
+	
+	v2.push_back(70);
+	v2.push_back(40);
+	v2.push_back(20);
+	
+	vector<int> v3(10); //size 10인 vector 생성
+	 
+	vector<int>::iterator iter_end;
+	
+//	iter_end = merge(v1.begin(), v1.end(), v2.begin(), v2.end(), v3.begin(), greater<int>()); //STL greater 사용 
+	
+	iter_end = merge(v1.begin(), v1.end(), v2.begin(), v2.end(), v3.begin(), Greater<int>());
+
+	
+	cout<< "v1 : ";
+	for(vector<int>::size_type i = 0; i < v1.size(); ++i)
+	{
+		cout<< v1[i] <<" ";
+	}
+	cout<<endl;
+	
+	
+	cout<< "v2 : ";
+	for(vector<int>::size_type i = 0; i < v2.size(); ++i)
+	{
+		cout<< v2[i] << " ";
+	}
+	cout<<endl;
+	
+	
+	cout<< "v3 : ";
+	for(vector<int>::size_type i = 0; i < v3.size(); ++i)
+	{
+		cout<< v3[i] << " ";
+	}
+	cout<<endl;
+	cout<<"v3(합병 순차열): "<<*v3.begin() << '~' << *(iter_end -1) <<endl;
+
+
+	return 0;
+} 
+#endif /* S9 */
+
+
+
+
+
+
+
+#ifdef S10
+
+//replace() 알고리즘
+int main()
+{
+	vector<int> v;
+	
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	v.push_back(50);
+
+	
+	cout<< "v : ";
+	for(vector<int>::size_type i = 0; i < v.size(); ++i)
+	{
+		cout<< v[i] <<" ";
+	}
+	cout<<endl;
+	
+	replace(v.begin(), v.end(), 30, 0); //구간 [v.begin(), v.end())의 원소 30을 0으로 수정 
+	
+	cout<< "v : ";
+	for(vector<int>::size_type i = 0; i < v.size(); ++i)
+	{
+		cout<< v[i] <<" ";
+	}
+	cout<<endl;
+	
+	return 0;	
+} 
+#endif /* S10*/
+
+
+
+
+
+
+
+#ifdef S11
+
+//replace_if() 알고리즘
+bool Pred(int n)
+{
+	return 30 <= n && n <= 50;
+	
+}
+
+
+int main()
+{
+	vector<int> v;
+	
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	v.push_back(50);
+	v.push_back(60);
+	v.push_back(70);
+	v.push_back(80);
+	
+	cout<< "v : ";
+	for(vector<int>::size_type i = 0; i < v.size(); ++i)
+	{
+		cout<< v[i] <<" ";
+	}
+	cout<<endl;
+	
+	replace_if(v.begin(), v.end(), Pred, 0);
+	
+		cout<< "v : ";
+	for(vector<int>::size_type i = 0; i < v.size(); ++i)
+	{
+		cout<< v[i] <<" ";
+	}
+	cout<<endl;
+	
+	return 0;
+	
+} 
+#endif /* S11*/
+
+
+
+
+
+
+
+#ifdef S12
+
+//replace_copy(), replace_copy_if() 알고리즘 
+bool Pred(int n)
+{
+	return n <= 30;
+	
+}
+
+
+int main()
+{
+	vector<int> v1;
+	
+	v1.push_back(10);
+	v1.push_back(20);
+	v1.push_back(30);
+	v1.push_back(40);
+	v1.push_back(30);	
+	v1.push_back(50);
+	
+	vector<int> v2(6); //size: 6인 vector 생성 
+	vector<int> v3(6); //size: 6인 vector 생성 
+	
+	
+	cout<< "v1 : ";
+	for(vector<int>::size_type i = 0; i < v1.size(); ++i)
+	{
+		cout<< v1[i] <<" ";
+	}
+	cout<<endl;
+	
+	cout<< "v2 : ";
+	for(vector<int>::size_type i = 0; i < v2.size(); ++i)
+	{
+		cout<< v2[i] <<" ";
+	}
+	cout<<endl;
+	
+	cout<< "v3 : ";
+	for(vector<int>::size_type i = 0; i < v3.size(); ++i)
+	{
+		cout<< v3[i] <<" ";
+	}
+	cout<<endl;
+	
+	vector<int>::iterator iter_end;
+	
+	//30인 원소를 모두 0으로 변환하여 [v2.begin(), iter_end) 순차열에 저장 
+	iter_end = replace_copy(v1.begin(), v1.end(), v2.begin(), 30, 0);  
+	//30이하인 원소를 모두 0으로 변환하여 [v3.begin(), iter_end) 순차열에 저장 
+	iter_end = replace_copy_if(v1.begin(), v1.end(), v3.begin(), Pred, 0);  
+	
+	
+		cout<< "v1 : ";
+	for(vector<int>::size_type i = 0; i < v1.size(); ++i)
+	{
+		cout<< v1[i] <<" ";
+	}
+	cout<<endl;
+	
+	
+	cout<< "v2 : ";
+	for(vector<int>::size_type i = 0; i < v2.size(); ++i)
+	{
+		cout<< v2[i] << " ";
+	}
+	cout<<endl;
+	
+	
+	cout<< "v3 : ";
+	for(vector<int>::size_type i = 0; i < v3.size(); ++i)
+	{
+		cout<< v3[i] << " ";
+	}
+	cout<<endl;
+
+
+	
+	return 0;
+	
+} 
+#endif /* S12*/
+
+
+
+
+
+
+
+#ifdef S13
+
+//swap_ranges() 알고리즘 
+int main()
+{
+	vector<int> v1;
+	
+	v1.push_back(10);
+	v1.push_back(20);
+	v1.push_back(30);
+	v1.push_back(40);
+	v1.push_back(50);
+
+	vector<int> v2;
+	
+	v2.push_back(11);
+	v2.push_back(22);
+	v2.push_back(33);
+	v2.push_back(44);
+	v2.push_back(55);
+	
+	
+	cout<< "v1 : ";
+	for(vector<int>::size_type i = 0; i < v1.size(); ++i)
+	{
+		cout<< v1[i] <<" ";
+	}
+	cout<<endl;
+	
+	cout<< "v2 : ";
+	for(vector<int>::size_type i = 0; i < v2.size(); ++i)
+	{
+		cout<< v2[i] <<" ";
+	}
+	cout<<endl;
+	
+	
+	
+	swap_ranges(v1.begin(), v1.end(), v2.begin());
+	
+	
+	
+	cout<< "v1 : ";
+	for(vector<int>::size_type i = 0; i < v1.size(); ++i)
+	{
+		cout<< v1[i] <<" ";
+	}
+	cout<<endl;
+	
+	cout<< "v2 : ";
+	for(vector<int>::size_type i = 0; i < v2.size(); ++i)
+	{
+		cout<< v2[i] <<" ";
+	}
+	cout<<endl;
+	
+	
+	return 0;
+	
+} 
+#endif /* S13*/
+
+
+
+
+
+
+#ifdef S14
+
+//transform() 알고리즘
+int Func(int n)
+{
+	return n+5;
+}
+
+int main()
+{
+	vector<int> v;
+	
+	v.push_back(10);
+	v.push_back(20);
+	v.push_back(30);
+	v.push_back(40);
+	v.push_back(50);
+
+	
+	cout<< "v : ";
+	for(vector<int>::size_type i = 0; i < v.size(); ++i)
+	{
+		cout<< v[i] <<" ";
+	}
+	cout<<endl;
+	
+	
+	transform(v.begin(), v.end(), v.begin(), Func); 
+	
+	
+	cout<< "v : ";
+	for(vector<int>::size_type i = 0; i < v.size(); ++i)
+	{
+		cout<< v[i] <<" ";
+	}
+	cout<<endl;
+	
+	return 0;
+	
+ } 
+#endif /* S14 */
+
+
+
+
+
+
+
+
+#ifdef S15
+
+//transform() 알고리즘의 반환 반복자 
+int Func(int n)
+{
+	return n+5;
+}
+
+int main()
+{
+	vector<int> v1;
+	
+	v1.push_back(10);
+	v1.push_back(20);
+	v1.push_back(30);
+	v1.push_back(40);
+	v1.push_back(50);
+	
+	vector<int> v2(10); //size: 10 vector 생성 
+
+	
+	cout<< "v1 : ";
+	for(vector<int>::size_type i = 0; i < v1.size(); ++i)
+	{
+		cout<< v1[i] <<" ";
+	}
+	cout<<endl;
+
+
+	cout<< "v2 : ";
+	for(vector<int>::size_type i = 0; i < v2.size(); ++i)
+	{
+		cout<< v2[i] <<" ";
+	}
+	cout<<endl;
+	
+	
+	vector<int>::iterator iter_end;
+	iter_end = transform(v1.begin(), v1.end(), v2.begin(), Func); 
+
+
+	cout<< "v1 : ";
+	for(vector<int>::size_type i = 0; i < v1.size(); ++i)
+	{
+		cout<< v1[i] <<" ";
+	}
+	cout<<endl;
+
+
+	cout<< "v2 : ";
+	for(vector<int>::size_type i = 0; i < v2.size(); ++i)
+	{
+		cout<< v2[i] <<" ";
+	}
+	cout<<endl;
+	
+	
+	cout<<"[v2.begin(), iter_end] 순차열 : "<< *v2.begin() << "..."<< *(iter_end-1) <<endl;	
+	return 0;
+	
+ } 
+#endif /* S15 */
+
+
+
+
+
+
+
+#ifdef S16
+
+//transform() 알고리즘
+int Func(int n)
+{
+	return n+5;
+}
+
+int main()
+{
+	vector<int> v1;
+	
+	v1.push_back(10);
+	v1.push_back(20);
+	v1.push_back(30);
+	v1.push_back(40);
+	v1.push_back(50);
+	
+	vector<int> v2(10); //size: 10 vector 생성 
+
+	
+	cout<< "v1 : ";
+	for(vector<int>::size_type i = 0; i < v1.size(); ++i)
+	{
+		cout<< v1[i] <<" ";
+	}
+	cout<<endl;
+
+
+	cout<< "v2 : ";
+	for(vector<int>::size_type i = 0; i < v2.size(); ++i)
+	{
+		cout<< v2[i] <<" ";
+	}
+	cout<<endl;
+	
+	
+	vector<int>::iterator iter_end;
+	iter_end = transform(v1.begin(), v1.end(), v2.begin(), Func); 
+
+
+	cout<< "v1 : ";
+	for(vector<int>::size_type i = 0; i < v1.size(); ++i)
+	{
+		cout<< v1[i] <<" ";
+	}
+	cout<<endl;
+
+
+	cout<< "v2 : ";
+	for(vector<int>::size_type i = 0; i < v2.size(); ++i)
+	{
+		cout<< v2[i] <<" ";
+	}
+	cout<<endl;
+	
+	
+	cout<<"[v2.begin(), iter_end] 순차열 : "<< *v2.begin() << "..."<< *(iter_end-1) <<endl;	
+	return 0;
+	
+ } 
+#endif /* S16 */
+
+
+
+
+
+
+
+#ifdef S17
+
+//두 순차열의 연산이 가능한 transform() 알고리즘
+int Plus(int left, int right)
+{
+	return left + right;
+}
+
+int main()
+{
+	vector<int> v1;
+	
+	v1.push_back(10);
+	v1.push_back(20);
+	v1.push_back(30);
+	v1.push_back(40);
+	v1.push_back(50);
+		
+	vector<int> v2;
+	
+	v2.push_back(1);
+	v2.push_back(2);
+	v2.push_back(3);
+	v2.push_back(4);
+	v2.push_back(5);
+	
+	vector<int> v3(5); //size: 5인 vector 생성 
+	
+	vector<int>::iterator iter_end;
+	
+//	iter_end = transform(v1.begin(), v1.end(), v2.begin(), v3.begin(), plus<int>());
+	iter_end = transform(v1.begin(), v1.end(), v2.begin(), v3.begin(), Plus);
+
+	cout<< "v1 : ";
+	for(vector<int>::size_type i = 0; i < v1.size(); ++i)
+	{
+		cout<< v1[i] <<" ";
+	}
+	cout<<endl;
+	
+	cout<< "v2 : ";
+	for(vector<int>::size_type i = 0; i < v2.size(); ++i)
+	{
+		cout<< v2[i] <<" ";
+	}
+	cout<<endl;
+	
+	cout<< "v3 : ";
+	for(vector<int>::size_type i = 0; i < v3.size(); ++i)
+	{
+		cout<< v3[i] <<" ";
+	}
+	cout<<endl;
+	
+	cout<<"[v3.begin(), iter_end() 순차열:";
+	for(vector<int>::iterator iter = v3.begin(); iter != iter_end; ++iter)
+	{
+		cout<< *iter << " ";
+	}
+	cout<<endl;
+	
+} 
+#endif /* S17 */
